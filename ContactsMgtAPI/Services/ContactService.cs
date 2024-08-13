@@ -21,7 +21,7 @@ namespace ContactsMgtAPI.Services
         public void AddContact(Contact contact)
         {
             var contacts = GetContacts().ToList();
-            contact.Id = contacts.Max(c => c.Id) + 1;
+            contact.Id = contacts.Any() ? contacts.Max(c => c.Id) + 1 : 1;
             contacts.Add(contact);
             File.WriteAllText(_filePath, JsonSerializer.Serialize(contacts));
         }
