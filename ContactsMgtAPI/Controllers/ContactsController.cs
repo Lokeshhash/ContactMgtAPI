@@ -37,6 +37,7 @@ namespace ContactsMgtAPI.Controllers
         [HttpPost]
         public IActionResult AddContact([FromBody] Contact contact)
         {
+            //throw new Exception("Test Exception");
             _contactService.AddContact(contact);
             return CreatedAtAction(nameof(GetContactById), new { id = contact.Id }, contact);
         }
